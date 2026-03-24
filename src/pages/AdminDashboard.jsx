@@ -1,13 +1,13 @@
-import { 
-  useState, 
+import {
+  useState,
   useEffect
- } from 'react'
+} from 'react'
 import { useAuth } from '../context/AuthContext'
 import {
-  getAllRequests, 
-  resolveRequest, 
+  getAllRequests,
+  resolveRequest,
   getGlobalStats,
-  getAllUsers, 
+  getAllUsers,
   getAllVacanciesAdmin
 } from '../services/admin.services.js'
 import './AdminDashboard.css'
@@ -91,7 +91,6 @@ export default function AdminDashboard() {
           ))}
         </div>
 
-        {/* ESTADÍSTICAS */}
         {tab === 'Estadísticas' && stats && (
           <div className="admin-section animate-fade-up">
             <div className="admin-stats">
@@ -116,7 +115,6 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* CANDIDATOS */}
         {tab === 'Candidatos' && (
           <div className="admin-section animate-fade-up">
             <h2 className="admin-section__title">Candidatos ({candidates.length})</h2>
@@ -138,7 +136,6 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* EMPRESAS */}
         {tab === 'Empresas' && (
           <div className="admin-section animate-fade-up">
             <h2 className="admin-section__title">Empresas ({companies.length})</h2>
@@ -166,7 +163,6 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* VACANTES */}
         {tab === 'Vacantes' && (
           <div className="admin-section animate-fade-up">
             <h2 className="admin-section__title">Vacantes ({vacancies.length})</h2>
@@ -192,7 +188,6 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* SOLICITUDES */}
         {tab === 'Solicitudes' && (
           <div className="admin-section animate-fade-up">
             <h2 className="admin-section__title">Solicitudes de empresa</h2>

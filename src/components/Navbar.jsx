@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import {
+  useState,
+  useEffect
+} from 'react'
+import {
+  Link,
+  useLocation
+} from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import './Navbar.css'
 
@@ -21,7 +27,7 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
         <Link to="/" className="navbar__logo">
-          <span className="navbar__logo-text">Humantyx</span>
+          <img src="/logo.png" alt="Humantyx Jobs" className="navbar__logo-img" />
         </Link>
 
         <nav className={`navbar__nav ${menuOpen ? 'navbar__nav--open' : ''}`}>

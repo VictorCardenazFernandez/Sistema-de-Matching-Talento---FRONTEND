@@ -19,7 +19,6 @@ export default function RegisterEmpresa() {
         contact_phone: '', ruc: '', company_type: 'S.A.C.',
     })
 
-
     const handleSendCode = async (e) => {
         e.preventDefault()
         setLoading(true)
@@ -114,7 +113,6 @@ export default function RegisterEmpresa() {
 
                 <div className="register-empresa__card">
 
-                    {/* Indicador de pasos */}
                     {step !== 'done' && (
                         <div className="register-steps">
                             {['email', 'verify', 'form'].map((s, i) => (
@@ -128,7 +126,6 @@ export default function RegisterEmpresa() {
                         </div>
                     )}
 
-                    {/* Step 1 — Email */}
                     {step === 'email' && (
                         <form onSubmit={handleSendCode} className="register-form">
                             <div className="form-field">
@@ -144,7 +141,6 @@ export default function RegisterEmpresa() {
                         </form>
                     )}
 
-                    {/* Step 2 — Verificar código */}
                     {step === 'verify' && (
                         <form onSubmit={handleVerifyCode} className="register-form">
                             <p className="register-form__hint">
@@ -168,7 +164,6 @@ export default function RegisterEmpresa() {
                         </form>
                     )}
 
-                    {/* Step 3 — Formulario */}
                     {step === 'form' && (
                         <form onSubmit={handleSubmit} className="register-form">
                             <div className="form-grid">
@@ -200,17 +195,26 @@ export default function RegisterEmpresa() {
                                 <label className="form-label">RUC</label>
                                 <input className="form-input" required maxLength={11}
                                     value={form.ruc}
-                                    onChange={e => setForm(p => ({ ...p, ruc: e.target.value }))}
-                                    onBlur={e => handleCheckRuc(e.target.value)}
+                                    onChange={e => {
+                                        const val = e.target.value
+                                        setForm(p => ({ ...p, ruc: val }))
+                                        if (val.length === 11) handleCheckRuc(val)
+                                    }}
                                     placeholder="20123456789" />
-                                {checkingRuc && <p className="form-hint">Verificando RUC...</p>}
+
+                                {checkingRuc && <p className="ruc-checking">Verificando RUC...</p>}
+
                                 {rucInfo && !rucInfo.error && (
                                     <div className="ruc-info">
-                                        <p className="ruc-info__name">{rucInfo.razon_social}</p>
-                                        <p className="ruc-info__estado">✓ {rucInfo.estado}</p>
+                                        <p className="ruc-info__label">Empresa encontrada</p>
+                                        <p className="ruc-info__name">{rucInfo.nombre}</p>
+                                        <p className="ruc-info__estado">✓ RUC Activo</p>
                                     </div>
                                 )}
-                                {rucInfo?.error && <p className="form-hint form-hint--error">{rucInfo.error}</p>}
+
+                                {rucInfo?.error && (
+                                    <p className="form-hint form-hint--error">✗ {rucInfo.error}</p>
+                                )}
                             </div>
 
                             <div className="form-field">
@@ -230,7 +234,6 @@ export default function RegisterEmpresa() {
                         </form>
                     )}
 
-                    {/* Done */}
                     {step === 'done' && (
                         <div className="register-done">
                             <div className="register-done__icon">🎉</div>

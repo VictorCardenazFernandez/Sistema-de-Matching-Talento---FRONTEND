@@ -11,7 +11,9 @@
 .vacancy-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--gold));
   transform: scaleX(0);
@@ -25,7 +27,9 @@
   transform: translateY(-2px);
 }
 
-.vacancy-card:hover::before { transform: scaleX(1); }
+.vacancy-card:hover::before {
+  transform: scaleX(1);
+}
 
 .vacancy-card__header {
   display: flex;
@@ -35,7 +39,8 @@
 }
 
 .vacancy-card__company-logo {
-  width: 40px; height: 40px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-md);
   background: var(--ink);
   color: var(--cream);
@@ -94,7 +99,9 @@
   border: 1px solid var(--border);
 }
 
-.vacancy-tag--location { color: var(--text-muted); }
+.vacancy-tag--location {
+  color: var(--text-muted);
+}
 
 .vacancy-card__desc {
   font-size: 0.875rem;
@@ -140,7 +147,7 @@
 .vacancy-card__apply-btn:hover:not(:disabled) {
   background: var(--accent);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(61,191,184,0.35);
+  box-shadow: 0 4px 12px rgba(61, 191, 184, 0.35);
 }
 
 .vacancy-card__apply-btn--applied {

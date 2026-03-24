@@ -1,8 +1,17 @@
-import { useState, useEffect } from 'react'
+import {
+  useState,
+  useEffect
+} from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useAuth0 } from '@auth0/auth0-react'
-import { getVacancies, applyToVacancy } from '../services/vacancy.service.js'
-import { API_URL, buildHeaders } from '../services/auth.service.js'
+import {
+  getVacancies,
+  applyToVacancy
+} from '../services/vacancy.service.js'
+import {
+  API_URL,
+  buildHeaders
+} from '../services/auth.service.js'
 import { getRecommendedVacancies } from '../services/groq.service.js'
 import VacancyCard from '../components/VacancyCard'
 import VacancyModal from '../components/VacancyModal'
@@ -12,7 +21,6 @@ import './Vacancies.css'
 export default function Vacancies() {
   const { getToken, isAuthenticated, role } = useAuth()
   const { getAccessTokenSilently } = useAuth0()
-
   const [vacancies, setVacancies] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -59,7 +67,7 @@ export default function Vacancies() {
         const data = await res.json()
         setCandidateProfile(data.profile)
       }
-    } catch {}
+    } catch { }
   }
 
   const loadRecommendations = async () => {

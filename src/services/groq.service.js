@@ -1,4 +1,7 @@
-import { API_URL, buildHeaders } from './auth.service'
+import {
+  API_URL,
+  buildHeaders
+} from './auth.service'
 
 export async function getRecommendedVacancies(token) {
   const res = await fetch(`${API_URL}/ai/recommend/vacancies`, {

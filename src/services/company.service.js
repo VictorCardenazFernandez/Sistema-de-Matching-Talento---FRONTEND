@@ -1,4 +1,7 @@
-import { API_URL, buildHeaders } from './auth.service'
+import {
+  API_URL,
+  buildHeaders
+} from './auth.service'
 
 export async function getMyCompany(token) {
   const res = await fetch(`${API_URL}/company/me`, { headers: buildHeaders(token) })

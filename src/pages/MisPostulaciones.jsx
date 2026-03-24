@@ -1,11 +1,11 @@
-import { 
-  useState, 
-  useEffect 
+import {
+  useState,
+  useEffect
 } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { 
-  API_URL, 
-  buildHeaders 
+import {
+  API_URL,
+  buildHeaders
 } from '../services/auth.service'
 import './MisPostulaciones.css'
 
@@ -35,9 +35,9 @@ export default function MisPostulaciones() {
   }, [])
 
   const statusMap = {
-    pending:  { label: 'En proceso', cls: 'postulacion-status--pending' },
-    accepted: { label: 'Aceptado',   cls: 'postulacion-status--accepted' },
-    rejected: { label: 'Rechazado',  cls: 'postulacion-status--rejected' },
+    pending: { label: 'En proceso', cls: 'postulacion-status--pending' },
+    accepted: { label: 'Aceptado', cls: 'postulacion-status--accepted' },
+    rejected: { label: 'Rechazado', cls: 'postulacion-status--rejected' },
   }
 
   if (loading) return <div className="route-loading"><div className="route-loading__spinner" /></div>
@@ -75,8 +75,8 @@ export default function MisPostulaciones() {
                     <p className="postulacion-card__date">
                       {app.applied_at
                         ? new Date(app.applied_at).toLocaleDateString('es', {
-                            day: 'numeric', month: 'short', year: 'numeric'
-                          })
+                          day: 'numeric', month: 'short', year: 'numeric'
+                        })
                         : ''}
                     </p>
                   </div>

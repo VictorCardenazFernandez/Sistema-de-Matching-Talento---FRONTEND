@@ -8,6 +8,10 @@ import MisPostulaciones from './pages/MisPostulaciones'
 import AdminDashboard from './pages/AdminDashboard'
 import RegistrarEmpresa from './pages/RegistrarEmpresa'
 import Registro from './pages/Registro'
+import Terminos from './pages/Terminos'
+import Privacidad from './pages/Privacidad'
+import FAQ from './pages/FAQ'
+import Acerca from './pages/Acerca'
 
 export default function AppRoutes() {
   return (
@@ -31,6 +35,18 @@ export default function AppRoutes() {
       } />
       <Route path="/registro" element={
         <Registro />
+      } />
+      <Route path="/terminos" element={
+        <Terminos />
+      } />
+      <Route path="/privacidad" element={
+        <Privacidad />
+      } />
+      <Route path="/faq" element={
+        <FAQ />
+      } />
+      <Route path="/acerca" element={
+        <Acerca />
       } />
     </Routes>
   )

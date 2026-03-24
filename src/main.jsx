@@ -1,21 +1,25 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, useNavigate } from 'react-router-dom'
+import {
+  BrowserRouter,
+  useNavigate
+} from 'react-router-dom'
 import { Auth0Provider } from '@auth0/auth0-react'
 import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import AppRoutes from './AppRoutes'
+import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import './index.css'
 
 function Auth0ProviderWithNavigate() {
   const navigate = useNavigate()
 
-  // Solo incluir audience si está definido en .env
-  // Si no tienes una API creada en Auth0, déjalo vacío en .env
   const authParams = {
     redirect_uri: window.location.origin,
     scope: 'openid profile email',
   }
+
   if (import.meta.env.VITE_AUTH0_AUDIENCE) {
     authParams.audience = import.meta.env.VITE_AUTH0_AUDIENCE
   }
@@ -32,6 +36,7 @@ function Auth0ProviderWithNavigate() {
       <AuthProvider>
         <Navbar />
         <AppRoutes />
+        <Footer />
       </AuthProvider>
     </Auth0Provider>
   )
@@ -40,6 +45,7 @@ function Auth0ProviderWithNavigate() {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+    <ScrollToTop />
       <Auth0ProviderWithNavigate />
     </BrowserRouter>
   </StrictMode>,

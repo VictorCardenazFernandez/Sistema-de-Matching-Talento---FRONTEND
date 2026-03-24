@@ -44,8 +44,8 @@ export default function OwnerInfo({ ownerInfo }) {
           <div className={`owner-info__status owner-info__status--${ownerInfo.status}`}>
             {ownerInfo.status === 'accepted' ? '✓ Aprobada'
               : ownerInfo.status === 'pending' ? '⏳ En revisión'
-              : ownerInfo.status === 'rejected' ? '✗ Rechazada'
-              : ownerInfo.status}
+                : ownerInfo.status === 'rejected' ? '✗ Rechazada'
+                  : ownerInfo.status}
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ export default function VacancyRecommendations({ recommendations, vacancies, loa
       <h2 className="recommendations__title">✨ Recomendadas para ti</h2>
       {loading ? (
         <div className="recommendations__skeletons">
-          {[1,2,3].map(i => <div key={i} className="recommendation-skeleton" />)}
+          {[1, 2, 3].map(i => <div key={i} className="recommendation-skeleton" />)}
         </div>
       ) : (
         <div className="recommendations__list">

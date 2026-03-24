@@ -41,7 +41,7 @@
 
 .recommendation-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(61,191,184,0.2);
+  box-shadow: 0 8px 24px rgba(61, 191, 184, 0.2);
 }
 
 .recommendation-card__score {
@@ -82,6 +82,7 @@
 }
 
 @media (max-width: 640px) {
+
   .recommendations__list,
   .recommendations__skeletons {
     grid-template-columns: 1fr;

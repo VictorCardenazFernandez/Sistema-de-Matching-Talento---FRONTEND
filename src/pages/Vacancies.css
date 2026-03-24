@@ -14,13 +14,17 @@
 .vacancies-hero::before {
   content: '';
   position: absolute;
-  top: -100px; right: -100px;
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(232,80,26,0.06) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(232, 80, 26, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.vacancies-hero__content { margin-bottom: 36px; }
+.vacancies-hero__content {
+  margin-bottom: 36px;
+}
 
 .vacancies-hero__eyebrow {
   display: inline-flex;
@@ -35,7 +39,8 @@
 }
 
 .vacancies-hero__dot {
-  width: 8px; height: 8px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #22c55e;
   animation: pulse-dot 2s infinite;
@@ -79,7 +84,7 @@
 
 .vacancies-search__input-wrap:focus-within {
   border-color: var(--ink);
-  box-shadow: 0 0 0 3px rgba(10,10,15,0.06);
+  box-shadow: 0 0 0 3px rgba(10, 10, 15, 0.06);
 }
 
 .vacancies-search__icon {
@@ -100,7 +105,9 @@
   outline: none;
 }
 
-.vacancies-search__input::placeholder { color: var(--text-muted); }
+.vacancies-search__input::placeholder {
+  color: var(--text-muted);
+}
 
 .vacancies-search__clear {
   position: absolute;
@@ -114,7 +121,9 @@
   padding: 4px;
 }
 
-.vacancies-search__clear:hover { color: var(--ink); }
+.vacancies-search__clear:hover {
+  color: var(--ink);
+}
 
 .vacancies-search__filters {
   display: flex;
@@ -142,12 +151,30 @@
   color: var(--text-secondary);
 }
 
-.filter-btn:hover { border-color: var(--ink); color: var(--ink); }
-.filter-btn--active { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+.filter-btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
 
-.vacancies-results { padding: 40px 0 80px; }
-.vacancies-results__header { margin-bottom: 28px; }
-.vacancies-count { font-size: 0.875rem; color: var(--text-muted); font-weight: 500; }
+.filter-btn--active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+
+.vacancies-results {
+  padding: 40px 0 80px;
+}
+
+.vacancies-results__header {
+  margin-bottom: 28px;
+}
+
+.vacancies-count {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
 
 .vacancies-grid {
   display: grid;
@@ -175,8 +202,14 @@
   margin-bottom: 12px;
 }
 
-.vacancy-skeleton__line--title { height: 22px; width: 70%; }
-.vacancy-skeleton__line--short { width: 40%; }
+.vacancy-skeleton__line--title {
+  height: 22px;
+  width: 70%;
+}
+
+.vacancy-skeleton__line--short {
+  width: 40%;
+}
 
 .vacancies-error,
 .vacancies-empty {
@@ -185,14 +218,29 @@
   color: var(--text-muted);
 }
 
-.vacancies-empty__icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.3; }
-.vacancies-error svg { margin-bottom: 12px; opacity: 0.4; }
+.vacancies-empty__icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.vacancies-error svg {
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
 
 .vacancies-error h3,
-.vacancies-empty h3 { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 8px; }
+.vacancies-empty h3 {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
 
 .vacancies-error p,
-.vacancies-empty p { font-size: 0.9rem; margin-bottom: 20px; }
+.vacancies-empty p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
 
 .btn-retry {
   padding: 9px 20px;
@@ -207,14 +255,33 @@
   transition: all var(--transition);
 }
 
-.btn-retry:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.btn-retry:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
 
 @media (min-width: 640px) {
-  .vacancies-search__filters { flex-direction: row; align-items: center; gap: 16px; }
-  .filter-group + .filter-group { padding-left: 16px; border-left: 1px solid var(--border); }
+  .vacancies-search__filters {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .filter-group+.filter-group {
+    padding-left: 16px;
+    border-left: 1px solid var(--border);
+  }
 }
 
 @media (max-width: 640px) {
-  .vacancies-grid, .vacancies-loading { grid-template-columns: 1fr; }
-  .vacancies-hero__title { font-size: 2.2rem; }
+
+  .vacancies-grid,
+  .vacancies-loading {
+    grid-template-columns: 1fr;
+  }
+
+  .vacancies-hero__title {
+    font-size: 2.2rem;
+  }
 }

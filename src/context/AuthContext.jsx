@@ -1,6 +1,14 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect
+} from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { API_URL, buildHeaders } from '../services/auth.service'
+import {
+  API_URL,
+  buildHeaders
+} from '../services/auth.service'
 
 const AuthContext = createContext(null)
 

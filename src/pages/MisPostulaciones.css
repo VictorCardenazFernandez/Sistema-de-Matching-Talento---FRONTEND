@@ -75,9 +75,35 @@
   font-weight: 600;
 }
 
-.postulacion-status--pending  { background: #fff8e1; color: #f59e0b; }
-.postulacion-status--accepted { background: #e8f5e9; color: #16a34a; }
-.postulacion-status--rejected { background: #fce4ec; color: #e11d48; }
+.postulacion-status--pending {
+  background: #fff8e1;
+  color: #f59e0b;
+}
 
-.tag--modality  { background: #f0fafa; color: #3DBFB8; border-radius: 20px; padding: 2px 12px; font-size: 0.8rem; font-weight: 600; }
-.tag--schedule  { background: #f5f0ff; color: #7c3aed; border-radius: 20px; padding: 2px 12px; font-size: 0.8rem; font-weight: 600; }
+.postulacion-status--accepted {
+  background: #e8f5e9;
+  color: #16a34a;
+}
+
+.postulacion-status--rejected {
+  background: #fce4ec;
+  color: #e11d48;
+}
+
+.tag--modality {
+  background: #f0fafa;
+  color: #3DBFB8;
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tag--schedule {
+  background: #f5f0ff;
+  color: #7c3aed;
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

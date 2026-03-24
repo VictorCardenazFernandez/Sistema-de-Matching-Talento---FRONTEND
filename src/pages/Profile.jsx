@@ -1,9 +1,17 @@
-import { useState, useEffect, useRef } from 'react'
+import {
+  useState,
+  useEffect,
+  useRef
+} from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { API_URL, buildHeaders } from '../services/auth.service'
+import {
+  API_URL,
+  buildHeaders
+} from '../services/auth.service'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import InviteModal from '../components/InviteModal'
+import EducationSection from '../components/EducationSection'
 import './Profile.css'
 
 export default function Profile() {
@@ -26,13 +34,15 @@ export default function Profile() {
   const [resumeUploaded, setResumeUploaded] = useState(false)
   const [cvUrl, setCvUrl] = useState(null)
   const [showInviteModal, setShowInviteModal] = useState(false)
+  const [education, setEducation] = useState([])
 
   useEffect(() => {
     if (role === 'company') navigate('/dashboard', { replace: true })
     else if (role === 'admin') navigate('/admin', { replace: true })
   }, [role])
 
-  useEffect(() => { fetchProfile() }, [])
+  useEffect(() => { fetchProfile(), fetchEducation() }, [])
+
 
   const fetchProfile = async () => {
     try {
@@ -63,11 +73,29 @@ export default function Profile() {
           const cvData = await cvRes.json()
           setCvUrl(cvData.signedUrl)
         }
-      } catch { }
+      } catch (err) {
+        console.error(err)
+      }
     } catch (err) {
       console.error(err)
     } finally {
       setLoadingProfile(false)
+    }
+  }
+
+  const fetchEducation = async () => {
+    try {
+      const token = await getAccessTokenSilently()
+      const res = await fetch(`${API_URL}/education`, {
+        headers: buildHeaders(token),
+      })
+
+      if (res.ok) {
+        const data = await res.json()
+        setEducation(data)
+      }
+    } catch (err) {
+      console.error(err)
     }
   }
 
@@ -126,6 +154,48 @@ export default function Profile() {
     } finally {
       setUploadingResume(false)
     }
+  }
+
+  const handleAddEducation = async (data) => {
+    try {
+      const token = await getAccessTokenSilently()
+      const res = await fetch(`${API_URL}/education`, {
+        method: 'POST',
+        headers: { ...buildHeaders(token), 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        const edu = await res.json()
+        setEducation(prev => [edu, ...prev])
+      }
+    } catch (err) { console.error(err) }
+  }
+
+  const handleUpdateEducation = async (id, data) => {
+    try {
+      const token = await getAccessTokenSilently()
+      const res = await fetch(`${API_URL}/education/${id}`, {
+        method: 'PUT',
+        headers: { ...buildHeaders(token), 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        const updated = await res.json()
+        setEducation(prev => prev.map(e => e.id === id ? updated : e))
+      }
+    } catch (err) { console.error(err) }
+  }
+
+  const handleDeleteEducation = async (id) => {
+    if (!confirm('¿Eliminar este estudio?')) return
+    try {
+      const token = await getAccessTokenSilently()
+      await fetch(`${API_URL}/education/${id}`, {
+        method: 'DELETE',
+        headers: buildHeaders(token),
+      })
+      setEducation(prev => prev.filter(e => e.id !== id))
+    } catch (err) { console.error(err) }
   }
 
   const displayName = form.first_name
@@ -308,6 +378,12 @@ export default function Profile() {
                 </button>
               </div>
             </form>
+            <EducationSection
+              education={education}
+              onAdd={handleAddEducation}
+              onUpdate={handleUpdateEducation}
+              onDelete={handleDeleteEducation}
+            />
           </section>
         </div>
       </div >

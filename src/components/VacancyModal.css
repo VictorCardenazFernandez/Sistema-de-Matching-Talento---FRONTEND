@@ -1,7 +1,7 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -50,11 +50,17 @@
   transition: color var(--transition);
 }
 
-.modal__close:hover { color: var(--ink); }
+.modal__close:hover {
+  color: var(--ink);
+}
 
-.modal__tags { margin-bottom: 24px; }
+.modal__tags {
+  margin-bottom: 24px;
+}
 
-.modal__btn-full { width: 100%; }
+.modal__btn-full {
+  width: 100%;
+}
 
 .modal__salary {
   background: var(--surface);
@@ -100,7 +106,9 @@
   font-weight: 600;
 }
 
-.modal__description { margin-bottom: 32px; }
+.modal__description {
+  margin-bottom: 32px;
+}
 
 .modal__description-title {
   font-weight: 700;
@@ -156,5 +164,7 @@
 }
 
 @media (max-width: 640px) {
-  .modal { padding: 24px; }
+  .modal {
+    padding: 24px;
+  }
 }

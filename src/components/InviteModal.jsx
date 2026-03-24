@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useAuth } from '../context/AuthContext'
-import { API_URL, buildHeaders } from '../services/auth.service'
+import {
+  API_URL,
+  buildHeaders
+} from '../services/auth.service'
 import './InviteModal.css'
 
 export default function InviteModal({ onClose }) {

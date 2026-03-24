@@ -268,7 +268,6 @@ export default function Dashboard() {
                     </button>
                 </div>
 
-                {/* Tabs */}
                 <div className="dashboard__tabs">
                     {TABS.map(t => (
                         <button key={t}
@@ -279,7 +278,6 @@ export default function Dashboard() {
                     ))}
                 </div>
 
-                {/* RESUMEN */}
                 {tab === 'Resumen' && (
                     <div className="dash-section animate-fade-up">
                         <div className="dash-stats">
@@ -324,7 +322,6 @@ export default function Dashboard() {
                     </div>
                 )}
 
-                {/* VACANTES */}
                 {tab === 'Vacantes' && (
                     <div className="dash-section animate-fade-up">
                         {showCreateForm && (
@@ -463,7 +460,6 @@ export default function Dashboard() {
                     </div>
                 )}
 
-                {/* POSTULANTES */}
                 {tab === 'Postulantes' && (
                     <div className="dash-section animate-fade-up">
                         {selectedVacancy && (
@@ -571,7 +567,6 @@ export default function Dashboard() {
                     </div>
                 )}
 
-                {/* MI EMPRESA */}
                 {tab === 'Mi Empresa' && (
                     <div className="dash-section animate-fade-up">
                         <OwnerInfo ownerInfo={ownerInfo} />

@@ -1,4 +1,7 @@
-import { API_URL, buildHeaders } from './auth.service'
+import {
+  API_URL,
+  buildHeaders
+} from './auth.service'
 
 export async function updateProfile(data, token) {
   const res = await fetch(`${API_URL}/api/users/profile`, {

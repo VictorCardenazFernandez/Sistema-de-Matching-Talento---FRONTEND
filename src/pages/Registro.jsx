@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import {
+  useState,
+  useEffect
+} from 'react'
+import {
+  useNavigate,
+  useSearchParams
+} from 'react-router-dom'
 import { API_URL } from '../services/auth.service'
 import { useAuth0 } from '@auth0/auth0-react'
 import './Registro.css'
@@ -9,7 +15,6 @@ export default function Registro() {
   const token = searchParams.get('token')
   const navigate = useNavigate()
   const { loginWithRedirect } = useAuth0()
-
   const [invitation, setInvitation] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
