@@ -12,6 +12,7 @@ import {
 } from '../services/admin.services.js'
 import './AdminDashboard.css'
 import AdminAnalytics from '../components/AdminAnalytics'
+import InviteModal from '../components/InviteModal'
 import {
   API_URL,
   buildHeaders
@@ -28,6 +29,7 @@ export default function AdminDashboard() {
   const [vacancies, setVacancies] = useState([])
   const [loading, setLoading] = useState(true)
   const [token, setToken] = useState(null)
+  const [showInviteModal, setShowInviteModal] = useState(false)
 
   useEffect(() => { loadAll(), getToken().then(t => setToken(t)) }, [])
 
@@ -78,6 +80,9 @@ export default function AdminDashboard() {
         <div className="admin-dashboard__header">
           <h1 className="admin-dashboard__title">Admin Panel</h1>
           <span className="admin-badge">🛡️ Administrador</span>
+          <button className="dash-btn dash-btn--ghost" onClick={() => setShowInviteModal(true)}>
+            👥 Invitar
+          </button>
         </div>
 
         <div className="admin-tabs">
@@ -98,7 +103,7 @@ export default function AdminDashboard() {
         </div>
 
         {tab === 'Estadísticas' && token && (
-           <AdminAnalytics token={token} API_URL={API_URL} buildHeaders={buildHeaders} />
+          <AdminAnalytics token={token} API_URL={API_URL} buildHeaders={buildHeaders} />
         )}
 
         {tab === 'Candidatos' && (
@@ -212,6 +217,7 @@ export default function AdminDashboard() {
           </div>
         )}
       </div>
+      {showInviteModal && <InviteModal onClose={() => setShowInviteModal(false)} />}
     </main>
   )
 }

@@ -16,6 +16,23 @@ export default function InviteModal({ onClose }) {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(null)
 
+  const roleOptions = {
+    candidate: [
+      { value: 'candidate', label: '👤 Candidato' }
+    ],
+    company: [
+      { value: 'candidate', label: '👤 Candidato' },
+      { value: 'company', label: '🏢 Empresa' }
+    ],
+    admin: [
+      { value: 'candidate', label: '👤 Candidato' },
+      { value: 'company', label: '🏢 Empresa' },
+      { value: 'admin', label: '🛡️ Administrador' }
+    ]
+  }
+
+  const options = roleOptions[role] || roleOptions.candidate
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
@@ -59,20 +76,21 @@ export default function InviteModal({ onClose }) {
                 placeholder="ejemplo@correo.com" />
             </div>
 
-            {role === 'admin' && (
+            {options.length > 1 && (
               <div className="form-field">
                 <label className="form-label">Rol</label>
                 <select className="form-input" value={inviteRole}
                   onChange={e => setInviteRole(e.target.value)}>
-                  <option value="candidate">Candidato</option>
-                  <option value="company">Empresa</option>
+                  {options.map(o => (
+                    <option key={o.value} value={o.value}>{o.label}</option>
+                  ))}
                 </select>
               </div>
             )}
 
             {role === 'candidate' && (
               <p className="invite-modal__note">
-                Puedes enviar hasta un máximo 5 invitaciones.
+                Puedes enviar hasta 5 invitaciones. El invitado se registrará como candidato.
               </p>
             )}
 

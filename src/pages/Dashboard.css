@@ -174,29 +174,51 @@
   flex-wrap: wrap;
 }
 
-/* Status badges */
+/* Status base */
 .dash-status {
-  padding: 3px 10px;
-  border-radius: 100px;
-  font-size: 0.72rem;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
+/* Status variants (últimas versiones) */
 .dash-status--open {
-  background: rgba(34, 197, 94, 0.12);
+  background: #e8f5e9;
   color: #16a34a;
 }
 
 .dash-status--closed {
-  background: rgba(239, 68, 68, 0.12);
-  color: #dc2626;
+  background: #f5f5f5;
+  color: #999;
 }
 
 .dash-status--pending {
-  background: rgba(234, 179, 8, 0.12);
-  color: #ca8a04;
+  background: #fff8e1;
+  color: #f59e0b;
+}
+
+.dash-status--accepted {
+  background: #e8f5e9;
+  color: #16a34a;
+}
+
+.dash-status--rejected {
+  background: #fce4ec;
+  color: #e11d48;
+}
+
+.dash-status--clickable {
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+
+.dash-status--clickable:hover {
+  opacity: 0.75;
 }
 
 /* Applicants */
@@ -329,6 +351,23 @@
   border-color: #dc2626;
 }
 
+/* Últimas versiones botones */
+.dash-btn--accept {
+  background: #e8f5e9;
+  color: #16a34a;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.dash-btn--reject {
+  background: #fce4ec;
+  color: #e11d48;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
 .dash-empty {
   color: var(--text-muted);
   font-size: 0.9rem;
@@ -342,93 +381,7 @@
   gap: 16px;
 }
 
-@media (max-width: 640px) {
-  .dash-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .dash-vacancy-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .dashboard__header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-.dash-btn--accept {
-  background: #e8f5e9;
-  color: #16a34a;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.dash-btn--reject {
-  background: #fce4ec;
-  color: #e11d48;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.dash-status--pending {
-  background: #fff8e1;
-  color: #f59e0b;
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.dash-status--accepted {
-  background: #e8f5e9;
-  color: #16a34a;
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.dash-status--rejected {
-  background: #fce4ec;
-  color: #e11d48;
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.dash-btn--accept {
-  background: #e8f5e9;
-  color: #16a34a;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.dash-btn--reject {
-  background: #fce4ec;
-  color: #e11d48;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
+/* AI postulantes */
 .postulantes-title {
   font-family: 'Syne', sans-serif;
   font-weight: 700;
@@ -468,7 +421,6 @@
   justify-content: center;
   font-weight: 700;
   font-size: 1.1rem;
-  flex-shrink: 0;
 }
 
 .postulantes-ai-info {
@@ -501,31 +453,26 @@
   margin: 0;
 }
 
-.dash-status--clickable {
-  cursor: pointer;
-  border: none;
-  transition: opacity 0.2s;
-  font-family: inherit;
+.postulantes-ai-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
 }
 
-.dash-status--clickable:hover {
-  opacity: 0.75;
-}
+/* Responsive */
+@media (max-width: 640px) {
+  .dash-stats {
+    grid-template-columns: 1fr;
+  }
 
-.dash-status--open {
-  background: #e8f5e9;
-  color: #16a34a;
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
+  .dash-vacancy-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.dash-status--closed {
-  background: #f5f5f5;
-  color: #999;
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  .dashboard__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

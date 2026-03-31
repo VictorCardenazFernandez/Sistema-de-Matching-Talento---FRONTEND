@@ -486,23 +486,44 @@ export default function Dashboard() {
                                     {aiRecs.map((rec) => {
                                         const candidate = applicants.find(a => a.apply_id === rec.apply_id)
                                         if (!candidate) return null
-
                                         return (
-                                            <div key={rec.apply_id} className="postulantes-ai-card">
+                                            <div key={rec.apply_id} className="postulantes-ai-card"
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() => setSelectedCandidate(candidate)}>
                                                 <div className="postulantes-ai-avatar">
                                                     {(candidate.first_name || 'U')[0].toUpperCase()}
                                                 </div>
-
                                                 <div className="postulantes-ai-info">
                                                     <div className="postulantes-ai-header">
                                                         <span className="postulantes-ai-name">
                                                             {candidate.first_name} {candidate.last_name}
                                                         </span>
-                                                        <span className="postulantes-ai-badge">
-                                                            {rec.score}% match
-                                                        </span>
+                                                        <span className="postulantes-ai-badge">{rec.score}% match</span>
                                                     </div>
                                                     <p className="postulantes-ai-reason">{rec.reason}</p>
+                                                </div>
+                                                <div className="postulantes-ai-actions" onClick={e => e.stopPropagation()}>
+                                                    {(() => {
+                                                        const statusMap = {
+                                                            pending: { label: 'En proceso', cls: 'dash-status--pending' },
+                                                            accepted: { label: 'Aceptado', cls: 'dash-status--accepted' },
+                                                            rejected: { label: 'Rechazado', cls: 'dash-status--rejected' },
+                                                        }
+                                                        const s = statusMap[candidate.status] || statusMap.pending
+                                                        return <span className={`dash-status ${s.cls}`}>{s.label}</span>
+                                                    })()}
+                                                    {(!candidate.status || candidate.status === 'pending') && (
+                                                        <>
+                                                            <button className="dash-btn dash-btn--accept"
+                                                                onClick={() => handleApplyStatus(candidate.apply_id, 'accepted')}>
+                                                                Aceptar
+                                                            </button>
+                                                            <button className="dash-btn dash-btn--reject"
+                                                                onClick={() => handleApplyStatus(candidate.apply_id, 'rejected')}>
+                                                                Rechazar
+                                                            </button>
+                                                        </>
+                                                    )}
                                                 </div>
                                             </div>
                                         )
@@ -518,16 +539,17 @@ export default function Dashboard() {
                         )}
                         <div className="dash-applicant-list">
                             {applicants.map(a => (
-                                <div key={a.apply_id} className="dash-applicant-card">
+                                <div
+                                    key={a.apply_id}
+                                    className="dash-applicant-card"
+                                    style={{ cursor: 'pointer' }}
+                                    onClick={() => setSelectedCandidate(a)}
+                                >
                                     <div className="dash-applicant__avatar">
                                         {(a.first_name || 'U')[0].toUpperCase()}
                                     </div>
                                     <div className="dash-applicant__info">
-                                        <span
-                                            className="dash-applicant__name"
-                                            style={{ cursor: 'pointer', textDecoration: 'underline' }}
-                                            onClick={() => setSelectedCandidate(a)}
-                                        >
+                                        <span className="dash-applicant__name">
                                             {a.first_name} {a.last_name}
                                         </span>
                                         <span className="dash-applicant__meta">
@@ -542,7 +564,7 @@ export default function Dashboard() {
                                             </div>
                                         )}
                                     </div>
-                                    <div className="dash-applicant__actions">
+                                    <div className="dash-applicant__actions" onClick={e => e.stopPropagation()}>
                                         {(() => {
                                             const statusMap = {
                                                 pending: { label: 'En proceso', cls: 'dash-status--pending' },
@@ -554,10 +576,12 @@ export default function Dashboard() {
                                         })()}
                                         {(!a.status || a.status === 'pending') && (
                                             <>
-                                                <button className="dash-btn dash-btn--accept" onClick={() => handleApplyStatus(a.apply_id, 'accepted')}>
+                                                <button className="dash-btn dash-btn--accept"
+                                                    onClick={() => handleApplyStatus(a.apply_id, 'accepted')}>
                                                     Aceptar
                                                 </button>
-                                                <button className="dash-btn dash-btn--reject" onClick={() => handleApplyStatus(a.apply_id, 'rejected')}>
+                                                <button className="dash-btn dash-btn--reject"
+                                                    onClick={() => handleApplyStatus(a.apply_id, 'rejected')}>
                                                     Rechazar
                                                 </button>
                                             </>
